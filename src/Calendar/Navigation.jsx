@@ -40,10 +40,12 @@ export default function Navigation({
   setActiveStartDate,
   showDoubleView,
   view,
+  noSecondNavigation,
+  noArrowsNavigation,
   views,
 }) {
   const drillUpAvailable = views.indexOf(view) > 0;
-  const shouldShowPrevNext2Buttons = view !== 'century';
+  const shouldShowPrevNext2Buttons = view !== 'century' && !noSecondNavigation;
 
   const previousActiveStartDate = getBeginPrevious(view, activeStartDate);
   const previousActiveStartDate2 = (
@@ -139,7 +141,7 @@ export default function Navigation({
         onClick={onClickPrevious}
         type="button"
       >
-        {prevLabel}
+        {!noArrowsNavigation && prevLabel}
       </button>
       <button
         aria-label={navigationAriaLabel}
@@ -166,7 +168,7 @@ export default function Navigation({
         onClick={onClickNext}
         type="button"
       >
-        {nextLabel}
+        {!noArrowsNavigation && nextLabel}
       </button>
       {next2Label !== null && shouldShowPrevNext2Buttons && (
         <button

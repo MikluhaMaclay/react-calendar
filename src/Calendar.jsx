@@ -489,10 +489,14 @@ export default class Calendar extends Component {
       prevAriaLabel,
       prevLabel,
       showDoubleView,
+      noArrowsNavigation,
+      noSecondNavigation
     } = this.props;
 
     return (
       <Navigation
+        noArrowsNavigation={noArrowsNavigation}
+        noSecondNavigation={noSecondNavigation}
         activeStartDate={activeStartDate}
         drillUp={this.drillUp}
         formatMonthYear={formatMonthYear}
